@@ -1,0 +1,35 @@
+from gmpy2 import *
+
+
+
+
+n=mpz(str(int('803F734ED9E3A3FBDEF8E3540B7B676FB66D15D2E5139840CB3CD06E62634C00A48EA2BF9BC3D7A709DBB47BE7E27DFB2C0E5B81254E6C326691471AE6DDC4A35539018BA6305DAFF1C480F195118B1310C546C31FE62C7AEC2A947013AC2897D00FD60E7B792DD499315341895BD1D1C9AA923E9373E1E01E2856B4FC8C6893',16)))
+p=mpz('6812427463539231600349464320632373878259506266011361351387035583576132041989251176508636878569037408377298402530520856411137155634830256279629494046731167')
+q=mpz('13219767207586640795571526377541732890465157517028423385812256305169857431521906172089205698188779144534548881591815311408600403492889107894773842719465101')
+	
+print 'n=',n
+print 'p=',int(p)
+print 'q=',int(div(n,p))
+
+def str2word(m):
+    return ''.join([chr(int(b, 16)) for b in [m[i:i+2] for i in range(0, len(m), 2)]])	
+	
+def m(i,p,q,n):#i:str
+    fi=open('D:/python/RSA/3/3-2/Frame'+i).read()
+    ei=int(fi[256:512],16)
+    ci=int(fi[512:],16)
+    print 'e'+i,ei
+    print 'c'+i,ci
+    fni=(p-1)*(q-1)
+    di=int(invert(ei,fni))
+    m_i=hex(pow(ci,di,n))[-17:-1]
+    print 'm_'+i,m_i
+    mi=str2word(m_i)
+    print 'm'+i,mi
+    return mi
+
+p=int(p)
+q=int(div(n,p))
+n=int(n)
+m2=m('4',p,q,n)
+
