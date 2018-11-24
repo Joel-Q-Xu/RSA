@@ -1,0 +1,2 @@
+plaintext = My secret is a famous saying of Albert Einstein. That is ”Logic will get 
+you from A to B. Imagination will take you everywhere.” 
